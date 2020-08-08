@@ -1,0 +1,21 @@
+<script type="text/javascript"> 
+if(!!window.performance && window.performance.navigation.type == 2)
+{window.location.reload();}
+</script>
+
+{% if latest_candidate_list %}
+    <form action="/voteapp/results/" method="post">
+    <h1>Voting Page</h1>
+    <p>To view the candidates' profile, click on their names</p>
+    <p>Please select the candidate you wish to vote for and submit:</p>
+    {% for cand in latest_candidate_list %}
+        <h3><input type="radio" name="vote_for" id="{{cand.id}}" value="{{cand.id}}"> <label for="{{cand.id}}"><a href="{% url 'detail' cand.id %}">{{ cand.name }}</a> </label><br>
+        {% csrf_token %}</h3>
+    {% endfor %}
+    <p></p>
+    <input type="submit" value="Submit Vote">
+    </form>
+
+{% else %}
+    <p>No candidates are available.</p>
+{% endif %}
