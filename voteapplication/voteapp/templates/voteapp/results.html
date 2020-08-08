@@ -1,8 +1,8 @@
 {% if latest_candidate_list %}
+    <h1>Results</h1>
     <ul>
     {% for cand in latest_candidate_list %}
-        <li><a href="{% url 'detail' cand.id %}">{{ cand.name }}</a> {{cand.votes}}
-            </li>
+        <h4><li><a href="{% url 'detail' cand.id %}">{{ cand.name }}</a> &emsp; {{cand.votes}} </li></h4>
     {% endfor %}
     </ul>
 {% else %}
