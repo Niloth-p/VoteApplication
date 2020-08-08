@@ -1,0 +1,13 @@
+{% if latest_candidate_list %}
+    <form action="/voteapp/results/" method="post">
+    <p>Please select the candidate you wish to vote for:</p>
+    {% for cand in latest_candidate_list %}
+        <input type="radio" name="vote_for" id="{{cand.id}}" value="{{cand.id}}"> <label for="{{cand.id}}"><a href="{% url 'detail' cand.id %}">{{ cand.name }}</a> </label><br>
+        {% csrf_token %}
+    {% endfor %}
+    <input type="submit" value="Submit">
+    </form>
+
+{% else %}
+    <p>No candidates are available.</p>
+{% endif %}

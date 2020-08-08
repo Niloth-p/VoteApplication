@@ -1,0 +1,10 @@
+{% if latest_candidate_list %}
+    <ul>
+    {% for cand in latest_candidate_list %}
+        <li><a href="{% url 'detail' cand.id %}">{{ cand.name }}</a> {{cand.votes}}
+            </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No candidates are available.</p>
+{% endif %}
